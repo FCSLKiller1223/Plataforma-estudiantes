@@ -141,7 +141,3 @@ BiblioUTP/
 ├── api-mock/
 └── angular-admin/
 ```
-
-## Nota de ejecución
-
-No se incluye `node_modules` para mantener ligero el ZIP. Ejecuta `npm install` en cada una de las tres carpetas antes de iniciar sus módulos.
