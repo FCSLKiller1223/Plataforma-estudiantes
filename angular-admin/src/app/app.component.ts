@@ -26,6 +26,11 @@ import { AuthService } from './services/auth.service';
               Préstamos
             </a>
 
+            <!-- BOTÓN DE MODO OSCURO / CLARO -->
+            <button class="btn btn-outline-light btn-sm" (click)="toggleDarkMode()">
+              {{ isDarkMode ? ' Modo Claro' : ' Modo Oscuro' }}
+            </button>
+
             <span class="text-white-50 small d-none d-md-inline">
               {{ auth.usuario?.nombre }}
             </span>
@@ -43,11 +48,26 @@ import { AuthService } from './services/auth.service';
   `
 })
 export class AppComponent {
+  isDarkMode = false;
 
   constructor(
     public auth: AuthService,
     private router: Router
-  ) {}
+  ) {
+    // Cargar preferencia guardada
+    const savedTheme = localStorage.getItem('admin_theme');
+    if (savedTheme === 'dark') {
+      this.isDarkMode = true;
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
+    }
+  }
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    localStorage.setItem('admin_theme', theme);
+  }
 
   salir() {
     this.auth.logout();

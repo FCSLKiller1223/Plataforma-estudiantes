@@ -82,3 +82,62 @@ body {
     background: #fff7ed;
     border-left: 4px solid #f97316
 }
+
+
+
+[data-bs-theme="dark"] body {
+    background: #0b0f19 !important;
+    color: #f1f5f9 !important;
+}
+
+
+[data-bs-theme="dark"] .navbar.bg-primary {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b;
+}
+
+[data-bs-theme="dark"] .panel {
+    background: #131c2e !important;
+    border-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-bs-theme="dark"] h1, 
+[data-bs-theme="dark"] h2, 
+[data-bs-theme="dark"] h3, 
+[data-bs-theme="dark"] h4, 
+[data-bs-theme="dark"] h5, 
+[data-bs-theme="dark"] h6,
+[data-bs-theme="dark"] .book-title,
+[data-bs-theme="dark"] .stat-value {
+    color: #ffffff !important;
+}
+
+
+[data-bs-theme="dark"] .muted,
+[data-bs-theme="dark"] .text-muted {
+    color: #94a3b8 !important;
+}
+
+
+[data-bs-theme="dark"] .table {
+    color: #f1f5f9 !important;
+}
+
+[data-bs-theme="dark"] .table-light,
+[data-bs-theme="dark"] .table-light th {
+    background-color: #1a2333 !important;
+    color: #94a3b8 !important;
+    border-color: #2e3a4e !important;
+}
+
+[data-bs-theme="dark"] td, 
+[data-bs-theme="dark"] th {
+    border-color: #1e293b !important;
+}
+
+
+[data-bs-theme="dark"] a {
+    color: #38bdf8 !important;
+}
