@@ -1,0 +1,50 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #20332e;
+  background: #f7f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: 320px;
+  background: var(--bs-body-bg, #f7f8f4);
+}
+
+a { text-underline-offset: 3px; }
+.site-navbar { background: #153d35; }
+.site-navbar .nav-link.active { color: #fff; font-weight: 700; }
+.hero-section { background: linear-gradient(120deg, #eff4eb 0%, #e1eee5 100%); }
+.hero-section h1 { max-width: 690px; color: #183c33; letter-spacing: -0.045em; }
+.hero-section .lead { max-width: 590px; color: #52635b; }
+.eyebrow { color: #49765e; font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
+.hero-note, .feature-tile, .form-card, .book-card, .reminder-card { border: 1px solid rgba(31, 74, 59, .1); border-radius: 1rem; }
+.hero-note { padding: 2rem; background: rgba(255,255,255,.7); box-shadow: 0 1rem 3rem rgba(31, 74, 59, .08); }
+.feature-tile { height: 100%; padding: 1.5rem; background: var(--bs-body-bg); }
+.feature-tile > strong { color: #477a60; font-size: .8rem; letter-spacing: .1em; }
+.page-section { min-height: calc(100vh - 150px); padding-top: 3.5rem; padding-bottom: 4rem; }
+.page-heading { margin-bottom: 2rem; }
+.book-card { overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; }
+.book-card:hover { transform: translateY(-3px); box-shadow: 0 .75rem 1.5rem rgba(24, 60, 51, .1); }
+.book-cover, .detail-cover { display: grid; place-items: center; color: #285741; background: linear-gradient(145deg, #e0eee2, #f3edda); }
+.book-cover { min-height: 150px; font-size: 3.5rem; }
+.detail-cover { min-height: 320px; border-radius: 1rem; font-size: 7rem; }
+.book-facts { max-width: 650px; margin-top: 2rem; }
+.book-facts dt { color: #668075; font-weight: 600; }
+.book-facts dd { font-weight: 500; }
+.back-link { color: #32644b; font-weight: 600; text-decoration: none; }
+.login-section { min-height: calc(100vh - 130px); padding-top: 4rem; padding-bottom: 4rem; }
+.form-card { box-shadow: 0 .75rem 2rem rgba(24, 60, 51, .06); }
+.reminder-card { background: var(--bs-tertiary-bg); }
+.not-found-code { color: #dce9df; font-size: clamp(7rem, 24vw, 14rem); font-weight: 900; line-height: 1; }
+.site-footer { padding: 1.25rem 0; color: #d5e5dc; background: #153d35; font-size: .875rem; }
+
+[data-bs-theme="dark"] .hero-section { background: linear-gradient(120deg, #182a25, #203b30); }
+[data-bs-theme="dark"] .hero-section h1, [data-bs-theme="dark"] .hero-section .lead { color: #e6f0e9; }
+[data-bs-theme="dark"] .hero-note { background: #1d2b26; }
+[data-bs-theme="dark"] .book-cover, [data-bs-theme="dark"] .detail-cover { background: linear-gradient(145deg, #283c32, #48432f); }
+
+@media (max-width: 991.98px) {
+  .site-navbar .navbar-collapse { padding-top: 1rem; }
+  .site-navbar .navbar-collapse > .d-flex { align-items: flex-start !important; padding-bottom: .5rem; }
+}

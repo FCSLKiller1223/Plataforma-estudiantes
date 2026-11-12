@@ -1,0 +1,340 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "María Fernanda Rojas",
+      "correo": "admin@biblioutp.edu.pe",
+      "codigo": "A00000001",
+      "rol": "admin",
+      "password": "Admin123*"
+    },
+    {
+      "id": 2,
+      "nombre": "Carlos Mendoza",
+      "correo": "biblioteca@biblioutp.edu.pe",
+      "codigo": "A00000002",
+      "rol": "admin",
+      "password": "Biblio2026*"
+    },
+    {
+      "id": 3,
+      "nombre": "Luis Quispe",
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "U20231234",
+      "rol": "estudiante",
+      "password": "Est123*"
+    },
+    {
+      "id": 4,
+      "nombre": "Andrea Salazar",
+      "correo": "u20235678@utp.edu.pe",
+      "codigo": "U20235678",
+      "rol": "estudiante",
+      "password": "Est456*"
+    },
+    {
+      "id": 5,
+      "nombre": "Diego Torres",
+      "correo": "u20234567@utp.edu.pe",
+      "codigo": "U20234567",
+      "rol": "estudiante",
+      "password": "Est789*"
+    },
+    {
+      "id": 6,
+      "nombre": "Valeria Paredes",
+      "correo": "u20239876@utp.edu.pe",
+      "codigo": "U20239876",
+      "rol": "estudiante",
+      "password": "Est321*"
+    }
+  ],
+  "libros": [
+    {
+      "id": 1,
+      "titulo": "JavaScript: The Good Parts",
+      "autor": "Douglas Crockford",
+      "categoria": "Programación",
+      "editorial": "O'Reilly",
+      "anio": 2008,
+      "isbn": "9780596517748",
+      "descripcion": "Fundamentos y buenas prácticas de JavaScript.",
+      "ejemplares": 5,
+      "disponibles": 4,
+      "estado": "activo"
+    },
+    {
+      "id": 2,
+      "titulo": "Eloquent JavaScript",
+      "autor": "Marijn Haverbeke",
+      "categoria": "Programación",
+      "editorial": "No Starch Press",
+      "anio": 2018,
+      "isbn": "9781593279509",
+      "descripcion": "Introducción moderna a la programación con JavaScript.",
+      "ejemplares": 4,
+      "disponibles": 4,
+      "estado": "activo"
+    },
+    {
+      "id": 3,
+      "titulo": "Clean Code",
+      "autor": "Robert C. Martin",
+      "categoria": "Ingeniería de software",
+      "editorial": "Prentice Hall",
+      "anio": 2008,
+      "isbn": "9780132350884",
+      "descripcion": "Principios para escribir código limpio y mantenible.",
+      "ejemplares": 3,
+      "disponibles": 1,
+      "estado": "activo"
+    },
+    {
+      "titulo": "Design Patterns",
+      "autor": "Erich Gamma y otros",
+      "categoria": "Ingeniería de software",
+      "editorial": "Addison-Wesley",
+      "anio": 1994,
+      "isbn": "9780201633610",
+      "estado": "activo",
+      "ejemplares": 2,
+      "disponibles": 1,
+      "descripcion": "Patrones de diseño orientados a objetos.",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "titulo": "Database System Concepts",
+      "autor": "Abraham Silberschatz",
+      "categoria": "Bases de datos",
+      "editorial": "McGraw-Hill",
+      "anio": 2019,
+      "isbn": "9780078022159",
+      "descripcion": "Conceptos de diseño y administración de bases de datos.",
+      "ejemplares": 4,
+      "disponibles": 4,
+      "estado": "activo"
+    },
+    {
+      "id": 6,
+      "titulo": "Computer Networking: A Top-Down Approach",
+      "autor": "James Kurose y Keith Ross",
+      "categoria": "Redes",
+      "editorial": "Pearson",
+      "anio": 2021,
+      "isbn": "9780136681557",
+      "descripcion": "Principios y protocolos de redes de computadoras.",
+      "ejemplares": 3,
+      "disponibles": 2,
+      "estado": "activo"
+    },
+    {
+      "titulo": "Introduction to Algorithms",
+      "autor": "Thomas H. Cormen y otros",
+      "categoria": "Algoritmos",
+      "editorial": "MIT Press",
+      "anio": 2022,
+      "isbn": "9780262046305",
+      "estado": "activo",
+      "ejemplares": 2,
+      "disponibles": 0,
+      "descripcion": "Estudio de algoritmos y análisis de complejidad.",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "titulo": "The Pragmatic Programmer",
+      "autor": "David Thomas y Andrew Hunt",
+      "categoria": "Programación",
+      "editorial": "Addison-Wesley",
+      "anio": 2019,
+      "isbn": "9780135957059",
+      "descripcion": "Consejos prácticos para el desarrollo profesional.",
+      "ejemplares": 3,
+      "disponibles": 2,
+      "estado": "activo"
+    }
+  ],
+  "prestamos": [
+    {
+      "id": 1,
+      "codigo": "PRE-0001",
+      "libroId": 1,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-10-25",
+      "fechaPrestamo": "2026-10-26",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto"
+    },
+    {
+      "id": 2,
+      "codigo": "PRE-0002",
+      "libroId": 3,
+      "estudianteId": 4,
+      "fechaSolicitud": "2026-10-26",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto"
+    },
+    {
+      "id": 3,
+      "codigo": "PRE-0003",
+      "libroId": 4,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-10-27",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado"
+    },
+    {
+      "id": 4,
+      "codigo": "PRE-0004",
+      "libroId": 5,
+      "estudianteId": 5,
+      "fechaSolicitud": "2026-10-28",
+      "fechaPrestamo": "2026-10-29",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto"
+    },
+    {
+      "id": 5,
+      "codigo": "PRE-0005",
+      "libroId": 2,
+      "estudianteId": 6,
+      "fechaSolicitud": "2026-10-29",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado"
+    },
+    {
+      "id": 6,
+      "codigo": "PRE-0006",
+      "libroId": 6,
+      "estudianteId": 4,
+      "fechaSolicitud": "2026-10-30",
+      "fechaPrestamo": "2026-10-31",
+      "fechaDevolucion": "2026-11-02",
+      "estado": "devuelto"
+    },
+    {
+      "id": 7,
+      "codigo": "PRE-0007",
+      "libroId": 8,
+      "estudianteId": 5,
+      "fechaSolicitud": "2026-10-30",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto"
+    },
+    {
+      "id": 8,
+      "codigo": "PRE-0008",
+      "libroId": 1,
+      "estudianteId": 6,
+      "fechaSolicitud": "2026-10-31",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado"
+    },
+    {
+      "codigo": "SOL-1793841792239",
+      "libroId": 8,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado",
+      "id": 9
+    },
+    {
+      "codigo": "SOL-1793841795278",
+      "libroId": 4,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado",
+      "id": 10
+    },
+    {
+      "codigo": "SOL-1793841932679",
+      "libroId": 8,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto",
+      "id": 11
+    },
+    {
+      "codigo": "SOL-1793841940639",
+      "libroId": 6,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto",
+      "id": 12
+    },
+    {
+      "codigo": "SOL-1793841946317",
+      "libroId": 3,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto",
+      "id": 13
+    },
+    {
+      "codigo": "SOL-1793933408567",
+      "libroId": 8,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-06",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado",
+      "id": 14
+    },
+    {
+      "codigo": "SOL-1793933602704",
+      "libroId": 5,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-06",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado",
+      "id": 15
+    },
+    {
+      "codigo": "SOL-1793933871906",
+      "libroId": 6,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto",
+      "id": 16
+    },
+    {
+      "codigo": "SOL-1793933906570",
+      "libroId": 4,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": null,
+      "fechaDevolucion": null,
+      "estado": "rechazado",
+      "id": 17
+    },
+    {
+      "codigo": "SOL-1793933907182",
+      "libroId": 2,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-05",
+      "fechaPrestamo": "2026-11-05",
+      "fechaDevolucion": "2026-11-05",
+      "estado": "devuelto",
+      "id": 18
+    }
+  ]
+}
