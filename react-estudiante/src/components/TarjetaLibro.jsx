@@ -4,7 +4,7 @@ export default function TarjetaLibro({ libro }) {
   const disponible = libro.estado === "activo" && Number(libro.disponibles) > 0;
   return (
     <article className="card h-100 book-card">
-      
+      <div className="book-cover" aria-hidden="true">📚</div>
       <div className="card-body d-flex flex-column">
         <span className="small text-uppercase text-muted mb-2">{libro.categoria}</span>
         <h2 className="h5">{libro.titulo}</h2>
