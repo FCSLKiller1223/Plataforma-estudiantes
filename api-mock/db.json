@@ -335,6 +335,26 @@
       "fechaDevolucion": "2026-11-05",
       "estado": "devuelto",
       "id": 18
+    },
+    {
+      "codigo": "SOL-1795456363522",
+      "libroId": 8,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-23",
+      "fechaPrestamo": "2026-11-23",
+      "fechaDevolucion": "2026-11-23",
+      "estado": "devuelto",
+      "id": 19
+    },
+    {
+      "codigo": "PRE-1795456612400",
+      "libroId": 2,
+      "estudianteId": 3,
+      "fechaSolicitud": "2026-11-23",
+      "fechaPrestamo": "2026-11-23",
+      "fechaDevolucion": "2026-11-23",
+      "estado": "devuelto",
+      "id": 20
     }
   ]
 }

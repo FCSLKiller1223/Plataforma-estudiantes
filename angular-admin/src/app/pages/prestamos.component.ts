@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { BibliotecaService } from '../services/biblioteca.service';
@@ -20,6 +20,7 @@ import { EstadoPrestamoPipe } from '../pipes/estado-prestamo.pipe';
 
       <div class="alert alert-info">
         El administrador no solicita préstamos: únicamente procesa las solicitudes de los estudiantes.
+        La lista se actualiza automáticamente cada 15 segundos.
       </div>
 
       <div class="panel overflow-hidden">
@@ -115,7 +116,9 @@ import { EstadoPrestamoPipe } from '../pipes/estado-prestamo.pipe';
     </main>
   `
 })
-export class PrestamosComponent implements OnInit {
+export class PrestamosComponent implements OnInit, OnDestroy {
+
+  private intervalo?: ReturnType<typeof setInterval>;
 
   prestamos: Prestamo[] = [];
   libros: Libro[] = [];
@@ -126,6 +129,11 @@ export class PrestamosComponent implements OnInit {
 
   ngOnInit() {
     this.cargar();
+    this.intervalo = setInterval(() => this.cargar(), 15000);
+  }
+
+  ngOnDestroy() {
+    if (this.intervalo) clearInterval(this.intervalo);
   }
 
   cargar() {

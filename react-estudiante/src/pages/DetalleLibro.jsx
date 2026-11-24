@@ -1,13 +1,37 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 
-export default function DetalleLibro({ libros }) {
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+export default function DetalleLibro() {
   const { id } = useParams();
   const { user } = useAuth();
-  const libro = libros.find((item) => String(item.id) === id);
-  if (!libro) {
-    return <main className="container page-section"><div className="alert alert-warning">No encontramos ese libro.</div><Link to="/catalogo">Volver al catálogo</Link></main>;
-  }
+  const [libro, setLibro] = useState(null);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    async function cargarDetalle() {
+      try {
+        const response = await fetch(`${API_URL}/libros/${id}`, { signal: controller.signal });
+        if (response.status === 404) throw new Error("No encontramos ese libro.");
+        if (!response.ok) throw new Error(`Error HTTP ${response.status}`);
+        setLibro(await response.json());
+      } catch (err) {
+        if (err.name !== "AbortError") setError(err.message || "No se pudo cargar el detalle del libro.");
+      } finally {
+        if (!controller.signal.aborted) setCargando(false);
+      }
+    }
+    cargarDetalle();
+    return () => controller.abort();
+  }, [id]);
+
+  if (cargando) return <main className="container page-section"><p>Cargando detalle del libro...</p></main>;
+  if (error || !libro) return <main className="container page-section"><div className="alert alert-warning">{error || "No encontramos ese libro."}</div><Link to="/catalogo">Volver al catálogo</Link></main>;
+
   const disponible = libro.estado === "activo" && libro.disponibles > 0;
   return (
     <main className="container page-section">

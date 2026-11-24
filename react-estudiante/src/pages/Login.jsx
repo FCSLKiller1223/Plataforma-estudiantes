@@ -7,13 +7,14 @@ export default function Login() {
   const { user, login } = useAuth();
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
+  const [cargando, setCargando] = useState(false);
   const [errores, setErrores] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
   const destino = location.state?.from?.pathname || "/mis-prestamos";
   if (user) return <Navigate to={destino} replace />;
 
-  const enviar = (event) => {
+  const enviar = async (event) => {
     event.preventDefault();
     const nuevosErrores = {};
     if (!esCorreoInstitucional(correo)) nuevosErrores.correo = mensajeError("correo", "ingresa tu correo institucional @utp.edu.pe.");
@@ -22,11 +23,19 @@ export default function Login() {
       setErrores(nuevosErrores);
       return;
     }
-    if (!login(correo, password)) {
-      setErrores({ general: "No pudimos iniciar sesión. Verifica tus datos de estudiante." });
-      return;
+    setCargando(true);
+    try {
+      const acceso = await login(correo, password);
+      if (!acceso) {
+        setErrores({ general: "No pudimos iniciar sesión. Verifica tus datos de estudiante." });
+        return;
+      }
+      navigate(destino, { replace: true });
+    } catch (error) {
+      setErrores({ general: error.userMessage || "No se pudo conectar con el servicio de autenticación." });
+    } finally {
+      setCargando(false);
     }
-    navigate(destino, { replace: true });
   };
 
   return (
@@ -40,20 +49,54 @@ export default function Login() {
               <p className="text-muted">Usa tu cuenta de estudiante BiblioUTP.</p>
               <form onSubmit={enviar} noValidate>
                 <div className="mb-3">
-                  <label className="form-label" htmlFor="correo">Correo institucional</label>
-                  <input id="correo" type="email" autoComplete="username" className={`form-control ${errores.correo ? "is-invalid" : ""}`} value={correo} onChange={(event) => setCorreo(event.target.value)} />
-                  {errores.correo && <div className="invalid-feedback">{errores.correo}</div>}
+                  <label className="form-label" htmlFor="correo">
+                    Correo institucional
+                  </label>
+                  <input
+                    id="correo"
+                    type="email"
+                    autoComplete="username"
+                    className={`form-control ${errores.correo ? "is-invalid" : ""}`}
+                    value={correo}
+                    onChange={(event) => setCorreo(event.target.value)}
+                  />
+                  {errores.correo && (
+                    <div className="invalid-feedback">{errores.correo}</div>
+                  )}
                 </div>
                 <div className="mb-3">
-                  <label className="form-label" htmlFor="password">Contraseña</label>
-                  <input id="password" type="password" autoComplete="current-password" className={`form-control ${errores.password ? "is-invalid" : ""}`} value={password} onChange={(event) => setPassword(event.target.value)} />
-                  {errores.password && <div className="invalid-feedback">{errores.password}</div>}
+                  <label className="form-label" htmlFor="password">
+                    Contraseña
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    autoComplete="current-password"
+                    className={`form-control ${errores.password ? "is-invalid" : ""}`}
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                  {errores.password && (
+                    <div className="invalid-feedback">{errores.password}</div>
+                  )}
                 </div>
-                {errores.general && <div className="alert alert-danger" role="alert">{errores.general}</div>}
-                <button className="btn btn-success w-100" type="submit">Ingresar</button>
+                {errores.general && (
+                  <div className="alert alert-danger" role="alert">
+                    {errores.general}
+                  </div>
+                )}
+                <button
+                  className="btn btn-success w-100"
+                  type="submit"
+                  disabled={cargando}
+                >
+                  {cargando ? "Validando..." : "Ingresar"}
+                </button>
               </form>
               <p className="small text-muted mt-4 mb-0">Cuenta de prueba: u20231234@utp.edu.pe · Est123*</p>
-              <Link className="small d-inline-block mt-2" to="/catalogo">Continuar como visitante</Link>
+              <Link className="small d-inline-block mt-2" to="/catalogo">
+                Continuar como visitante
+              </Link>
             </div>
           </div>
         </div>

@@ -1,21 +1,26 @@
 import { createContext, useContext, useMemo, useState } from "react";
-import db from "../data/db.json";
+import { api } from "../services/api.js";
 
 const AuthContext = createContext(null);
 const STORAGE_KEY = "biblioutp-estudiante";
 
-const getSavedUser = () => {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (!saved) return null;
-  const parsed = JSON.parse(saved);
-  return parsed?.rol === "estudiante" ? parsed : null;
-};
+function getSavedUser() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const user = saved ? JSON.parse(saved) : null;
+    return user?.rol === "estudiante" ? user : null;
+  } catch {
+    localStorage.removeItem(STORAGE_KEY);
+    return null;
+  }
+}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(getSavedUser);
 
-  const login = (correo, password) => {
-    const account = db.usuarios.find((candidate) =>
+  const login = async (correo, password) => {
+    const response = await api.get("/usuarios", { params: { correo } });
+    const account = response.data.find((candidate) =>
       candidate.correo.toLowerCase() === correo.trim().toLowerCase()
       && candidate.password === password
       && candidate.rol === "estudiante"
@@ -43,8 +48,8 @@ export function AuthProvider({ children }) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-export const useAuth = () => {
+export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) throw new Error("useAuth debe usarse dentro de AuthProvider.");
   return context;
-};
+}
